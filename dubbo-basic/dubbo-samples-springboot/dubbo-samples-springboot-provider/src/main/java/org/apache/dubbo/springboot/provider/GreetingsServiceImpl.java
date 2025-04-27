@@ -18,8 +18,11 @@
 package org.apache.dubbo.springboot.provider;
 
 
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.samples.api.GreetingsService;
 
+
+@DubboService
 public class GreetingsServiceImpl implements GreetingsService {
     @Override
     public String sayHi(String name) {

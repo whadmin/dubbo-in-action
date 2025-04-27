@@ -32,9 +32,11 @@ public class EmbeddedZooKeeper {
             port = Integer.parseInt(args[0]);
         }
 
+        // 数据存储位置：在临时目录中创建一个随机UUID命名的目录
         Properties properties = new Properties();
         File file = new File(System.getProperty("java.io.tmpdir")
                 + File.separator + UUID.randomUUID());
+        // 程序退出时删除此目录，意味着ZooKeeper关闭后数据将被清空
         file.deleteOnExit();
         properties.setProperty("dataDir", file.getAbsolutePath());
         properties.setProperty("clientPort", String.valueOf(port));
