@@ -40,8 +40,6 @@ public class AlwaysApplication {
     ApplicationConfig applicationConfig = new ApplicationConfig("first-dubbo-consumer");
     applicationConfig.setQosPort(22222);
 
-    RegistryConfig registryConfig = new RegistryConfig(NACOS_ADDRESS);
-
     ProtocolConfig protocolConfig = new ProtocolConfig("dubbo", -1);
 
     ReferenceConfig<GreetingsService> reference = new ReferenceConfig<>();
@@ -49,7 +47,8 @@ public class AlwaysApplication {
 
     DubboBootstrap.getInstance()
         .application(applicationConfig)
-        .registry(registryConfig)
+//        .registry(new RegistryConfig(NACOS_ADDRESS))
+        .registry(new RegistryConfig(ZOOKEEPER_ADDRESS))
         .protocol(protocolConfig)
         .reference(reference)
         .start();

@@ -43,13 +43,12 @@ public class Application {
     service.setInterface(GreetingsService.class);
     service.setRef(new GreetingsServiceImpl());
 
-    RegistryConfig registryConfig = new RegistryConfig(NACOS_ADDRESS);
-
     ProtocolConfig protocolConfig = new ProtocolConfig("dubbo", -1);
 
     DubboBootstrap.getInstance()
         .application(applicationConfig)
-        .registry(registryConfig)
+//        .registry(new RegistryConfig(NACOS_ADDRESS))
+        .registry(new RegistryConfig(ZOOKEEPER_ADDRESS))
         .protocol(protocolConfig)
         .service(service)
         .start()

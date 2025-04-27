@@ -22,5 +22,5 @@ dubbo:
     name: dubbo
     port: -1
   registry:
-#    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
-    address: nacos://${nacos.address:127.0.0.1}:8848
+    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+#    address: nacos://${nacos.address:127.0.0.1}:8848

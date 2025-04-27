@@ -11,6 +11,7 @@
   <modules>
     <module>dubbo-parent</module>
     <module>dubbo-basic</module>
+      <module>dubbo-config-server</module>
   </modules>
 
   <properties>
