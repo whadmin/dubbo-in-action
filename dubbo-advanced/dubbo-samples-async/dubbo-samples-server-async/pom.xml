@@ -13,7 +13,6 @@
         <module>dubbo-samples-server-async-interface</module>
         <module>dubbo-samples-server-async-provider</module>
         <module>dubbo-samples-server-async-consumer</module>
-        <module>dubbo-samples-async-error</module>
     </modules>
 
 </project>

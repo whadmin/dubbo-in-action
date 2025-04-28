@@ -12,6 +12,7 @@
     <modules>
         <module>dubbo-samples-server-async</module>
         <module>dubbo-samples-client-async</module>
+        <module>dubbo-samples-async-error</module>
     </modules>
 
 </project>
