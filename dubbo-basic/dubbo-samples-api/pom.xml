@@ -15,23 +15,4 @@
     <module>dubbo-samples-api-provider</module>
     <module>dubbo-samoles-api-consumer</module>
   </modules>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.dubbo</groupId>
-      <artifactId>dubbo</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.nacos</groupId>
-      <artifactId>nacos-client</artifactId>
-    </dependency>
-  </dependencies>
 </project>

@@ -17,14 +17,4 @@
     <module>dubbo-samples-springboot-consumer</module>
   </modules>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.dubbo</groupId>
-      <artifactId>dubbo-spring-boot-starter</artifactId>
-    </dependency>
-  </dependencies>
 </project>
