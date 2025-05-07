@@ -18,6 +18,7 @@
         <module>dubbo-samples-callback</module>
         <module>dubbo-samples-context</module>
         <module>dubbo-samples-mock</module>
+        <module>dubbo-samples-local</module>
         <module>dubbo-samples-validation</module>
         <module>dubbo-samples-version</module>
         <module>dubbo-samples-group</module>
