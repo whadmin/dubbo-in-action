@@ -15,27 +15,27 @@ import java.util.concurrent.CompletableFuture;
  */
 @Activate(group = {CommonConstants.PROVIDER})
 public class AttachmentTransferFilter implements Filter {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(AttachmentTransferFilter.class);
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         logger.info("AttachmentTransferFilter: 开始处理调用 {}", invocation.getMethodName());
-        
+
         // 记录线程ID，用于调试
         final long threadId = Thread.currentThread().getId();
         logger.debug("当前线程ID: {}", threadId);
-        
+
         // 调用服务
         Result result = invoker.invoke(invocation);
-        
+
         // 处理异步结果
         if (result.getValue() instanceof CompletableFuture) {
             logger.info("检测到异步调用，应用异步附件处理");
-            
+
             @SuppressWarnings("unchecked")
             CompletableFuture<Object> future = (CompletableFuture<Object>) result.getValue();
-            
+
             // 处理异步结果完成时的附件传递
             CompletableFuture<Object> newFuture = future.whenComplete((value, exception) -> {
                 try {
@@ -43,12 +43,12 @@ public class AttachmentTransferFilter implements Filter {
                     Map<String, Object> attachments = RpcContext.getServerContext().getObjectAttachments();
                     if (attachments != null && !attachments.isEmpty()) {
                         logger.info("找到服务端附件: {}", attachments.keySet());
-                        
+
                         // 将附件添加到结果中
                         for (Map.Entry<String, Object> entry : attachments.entrySet()) {
                             String key = entry.getKey();
                             Object val = entry.getValue();
-                            
+
                             // 使用 AppResponse 特定的方法添加附件
                             if (result instanceof AppResponse) {
                                 ((AppResponse) result).setAttachment(key, val);
@@ -66,9 +66,21 @@ public class AttachmentTransferFilter implements Filter {
                     logger.error("处理异步附件时发生异常", e);
                 }
             });
-            
+
             // 创建新的异步结果
             return AsyncRpcResult.newDefaultAsyncResult(newFuture, invocation);
+        } // 处理 AsyncRpcResult
+        else if (result instanceof AsyncRpcResult) {
+            AsyncRpcResult asyncResult = (AsyncRpcResult) result;
+            asyncResult.whenCompleteWithContext((r, e) -> {
+                // 获取服务端上下文中的附件
+                Map<String, Object> attachments = RpcContext.getServerResponseContext().getObjectAttachments();
+                if (attachments != null && !attachments.isEmpty()) {
+                    for (Map.Entry<String, Object> entry : attachments.entrySet()) {
+                        r.setAttachment(entry.getKey(), entry.getValue());
+                    }
+                }
+            });
         } else {
             // 处理同步结果
             logger.info("处理同步结果的附件传递");
@@ -79,7 +91,7 @@ public class AttachmentTransferFilter implements Filter {
                     for (Map.Entry<String, Object> entry : attachments.entrySet()) {
                         String key = entry.getKey();
                         Object val = entry.getValue();
-                        
+
                         // 使用 3.2.6 版本兼容的方式设置附件
                         if (result instanceof AppResponse) {
                             ((AppResponse) result).setAttachment(key, val);
@@ -96,7 +108,7 @@ public class AttachmentTransferFilter implements Filter {
                 logger.error("处理同步附件时发生异常", e);
             }
         }
-        
+
         return result;
     }
 }

@@ -41,6 +41,7 @@ public class AsyncConsumer {
         context.start();
 
         // 获取远程服务代理
+        RpcContext.getClientAttachment().setAttachment("consumer-key1", "consumer-value1");
         GreetingsService asyncService = context.getBean("asyncService", GreetingsService.class);
         
         // 演示方式1：通过RpcContext获取Future
@@ -61,11 +62,13 @@ public class AsyncConsumer {
         });
 
         // 演示方式2：使用RpcContext.asyncCall进行异步调用
+        RpcContext.getClientAttachment().setAttachment("consumer-key1", "consumer-value1");
         CompletableFuture<String> f = RpcContext.getContext().asyncCall(() -> asyncService.sayHiAsync("async call request"));
         System.out.println("方式2 - 异步调用结果: " + f.get());
         
         // 演示方式3：接口方法直接返回CompletableFuture
         System.out.println("方式3 - 开始调用返回CompletableFuture的接口方法");
+        RpcContext.getClientAttachment().setAttachment("consumer-key1", "consumer-value1");
         CompletableFuture<String> future = asyncService.sayHiFuture("future method");
         
         // 方式3不需要配置async="true"，也不需要从RpcContext获取Future

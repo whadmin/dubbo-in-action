@@ -20,6 +20,8 @@
 package org.apache.dubbo.samples.async.impl;
 
 
+import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.rpc.RpcContextAttachment;
 import org.apache.dubbo.samples.async.GreetingsService;
 
 import java.util.concurrent.CompletableFuture;
@@ -27,18 +29,33 @@ import java.util.concurrent.CompletableFuture;
 public class GreetingImpl implements GreetingsService {
     @Override
     public String sayHi(String name) {
+        // 从客户端获取附件
+        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
+        String received = (String) attachmentFromClient.getAttachment("consumer-key1");
+        System.out.println("consumer-key1 from attachment: " + received);
+
         System.out.println("async provider received: " + name);
         return "hello, " + name;
     }
 
     @Override
     public String sayHiAsync(String name) {
+        // 从客户端获取附件
+        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
+        String received = (String) attachmentFromClient.getAttachment("consumer-key1");
+        System.out.println("consumer-key1 from attachment: " + received);
+
         System.out.println("async provider received: " + name);
         return "hello, " + name;
     }
 
     @Override
     public CompletableFuture<String> sayHiFuture(String name) {
+        // 从客户端获取附件
+        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
+        String received = (String) attachmentFromClient.getAttachment("consumer-key1");
+        System.out.println("consumer-key1 from attachment: " + received);
+
         System.out.println("async provider received: " + name);
         return CompletableFuture.completedFuture("hello, " + name);
     }

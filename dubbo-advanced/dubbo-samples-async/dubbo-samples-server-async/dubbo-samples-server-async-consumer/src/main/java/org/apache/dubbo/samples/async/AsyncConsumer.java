@@ -57,8 +57,8 @@ public class AsyncConsumer {
         System.out.println("=== 调用 AsyncContext 方式实现的异步方法 ===");
         
         // 设置附件信息，将传递给服务提供者
-        RpcContext.getContext().setAttachment("consumer-key1", "consumer-value1");
-        RpcContext.getContext().setAttachment("filters", "async-context-filter");
+        RpcContext.getClientAttachment().setAttachment("consumer-key1", "consumer-value1");
+        RpcContext.getClientAttachment().setAttachment("filters", "async-context-filter");
         
         // 调用服务端异步方法 - 消费者以同步方式调用
         String result = service.sayHiAsync("async context call");

@@ -63,23 +63,21 @@ public class GreetingImpl implements GreetingsService {
         // 启动异步上下文，告知 Dubbo 当前方法异步执行
         AsyncContext asyncContext = RpcContext.startAsync();
         logger.info("sayHello start");
-        // 从客户端获取附件
-        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
-        // 用于向客户端发送附件
-        RpcContextAttachment attachmentToClient = RpcContext.getServerContext();
+
         // 创建新线程执行实际业务逻辑
         new Thread(() -> {
             // 切换上下文到当前线程，确保 RpcContext 在新线程中可用
             asyncContext.signalContextSwitch();
-
+            // 从客户端获取附件
+            RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
+            // 用于向客户端发送附件
+            RpcContextAttachment attachmentToClient = RpcContext.getClientAttachment();
             // 读取客户端发送的附件值
             String received = (String) attachmentFromClient.getAttachment("consumer-key1");
             logger.info("consumer-key1 from attachment: " + received);
-
             received = (String) attachmentFromClient.getAttachment("filters");
             logger.info("filters from attachment: " + received);
             attachmentToClient.setAttachment("filters", received);
-
             // 设置返回给客户端的附件
             attachmentToClient.setAttachment("server-key1", "server-" + received);
             try {
@@ -120,22 +118,20 @@ public class GreetingImpl implements GreetingsService {
     public CompletableFuture<String> sayHiFuture(String name) {
         // 启动异步上下文
         AsyncContext asyncContext = RpcContext.startAsync();
-        // 获取专用于接收客户端附件的上下文
-        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
-        // 获取专用于发送附件给客户端的上下文
-        RpcContextAttachment attachmentToClient = RpcContext.getServerContext();
         // 返回 CompletableFuture 对象，Dubbo 将等待其完成并发送结果
         return CompletableFuture.supplyAsync(() -> {
             // 切换上下文到当前线程
             asyncContext.signalContextSwitch();
+            // 从客户端获取附件
+            RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
+            // 用于向客户端发送附件
+            RpcContextAttachment attachmentToClient = RpcContext.getServerContext();
             // 读取客户端发送的附件值
             String received = (String) attachmentFromClient.getAttachment("consumer-key1");
             logger.info("consumer-key1 from attachment: " + received);
-
             received = (String) attachmentFromClient.getAttachment("filters");
             logger.info("filters from attachment: " + received);
             attachmentToClient.setAttachment("filters", received);
-
             // 设置返回给客户端的附件
             attachmentToClient.setAttachment("server-key1", "server-" + received);
             try {
