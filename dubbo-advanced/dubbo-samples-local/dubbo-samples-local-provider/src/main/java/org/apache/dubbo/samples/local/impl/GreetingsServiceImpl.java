@@ -15,9 +15,13 @@
  * limitations under the License.
  */
 
-package org.apache.dubbo.samples.local;
+package org.apache.dubbo.samples.local.impl;
 
-public interface GreetingsService {
+import org.apache.dubbo.samples.local.GreetingsService;
 
-    String sayHi(String name);
+public class GreetingsServiceImpl implements GreetingsService {
+    @Override
+    public String sayHi(String name) {
+        return "hi, " + name;
+    }
 }

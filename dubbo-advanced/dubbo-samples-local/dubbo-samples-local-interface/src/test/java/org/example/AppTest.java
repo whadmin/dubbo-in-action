@@ -36,6 +36,3 @@ public class AppTest
         assertTrue( true );
     }
 }
-public class AppTest {
-    
-}
