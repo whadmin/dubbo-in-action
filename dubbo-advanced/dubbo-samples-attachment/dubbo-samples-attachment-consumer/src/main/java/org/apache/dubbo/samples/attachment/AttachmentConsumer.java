@@ -41,7 +41,7 @@ public class AttachmentConsumer {
         // 获取远程服务代理
         RpcContext.getClientAttachment().setAttachment("consumer-key1", "consumer-value1");
         RpcContext.getServiceContext().setAttachment("consumer-key2", "consumer-value2");
-        GreetingsService attachmentService = context.getBean("attachmentService", GreetingsService.class);
+        GreetingsService attachmentService = context.getBean("mockService", GreetingsService.class);
         
         // 调用远程方法
         String world = attachmentService.sayHi("world");
