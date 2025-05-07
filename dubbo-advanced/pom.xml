@@ -13,6 +13,7 @@
     <modules>
         <module>dubbo-samples-async</module>
         <module>dubbo-samples-attachment</module>
+        <module>dubbo-samples-exception</module>
     </modules>
 
     <dependencies>

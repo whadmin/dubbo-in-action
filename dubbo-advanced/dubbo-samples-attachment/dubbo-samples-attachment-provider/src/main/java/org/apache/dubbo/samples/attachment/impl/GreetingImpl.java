@@ -27,17 +27,16 @@ import org.apache.dubbo.samples.attachment.GreetingsService;
 public class GreetingImpl implements GreetingsService {
     @Override
     public String sayHi(String name) {
-        // 用于从客户端获取附件
-        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
         // 读取客户端发送的附件值
-        String received = (String) attachmentFromClient.getAttachment("consumer-key1");
-        System.out.println("consumer-key1 from attachment: " + received);
+        System.out.println("consumer-key1 from attachment: " + (String) RpcContext.getServerAttachment().getAttachment("consumer-key1"));
+        System.out.println("consumer-key1 from attachment: " + (String) RpcContext.getServiceContext().getAttachment("consumer-key1"));
+        System.out.println("consumer-key1 from attachment: " + (String) RpcContext.getServerContext().getAttachment("consumer-key1"));
+        System.out.println("consumer-key2 from attachment: " + (String) RpcContext.getServerAttachment().getAttachment("consumer-key2"));
+        System.out.println("consumer-key2 from attachment: " + (String) RpcContext.getServiceContext().getAttachment("consumer-key2"));
+        System.out.println("consumer-key2 from attachment: " + (String) RpcContext.getServerContext().getAttachment("consumer-key2"));
 
-        // 用于向客户端发送附件
-        RpcContextAttachment attachmentToClient = RpcContext.getClientAttachment();
-        // 设置返回给客户端的附件
-        attachmentToClient.setAttachment("server-key1", "server-" + received);
-
+        RpcContext.getClientResponseContext().setAttachment("server-key1", "server-value1");
+        RpcContext.getServerContext().setAttachment("server-key2", "server-value2");
         return "hello, " + name;
     }
 }

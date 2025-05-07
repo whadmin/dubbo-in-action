@@ -40,12 +40,20 @@ public class AttachmentConsumer {
 
         // 获取远程服务代理
         RpcContext.getClientAttachment().setAttachment("consumer-key1", "consumer-value1");
+        RpcContext.getServiceContext().setAttachment("consumer-key2", "consumer-value2");
         GreetingsService attachmentService = context.getBean("attachmentService", GreetingsService.class);
         
-        // 演示方式1：通过RpcContext获取Future
-        // 调用远程方法 - 由于在xml中配置了async="true"，此调用会立即返回null
+        // 调用远程方法
         String world = attachmentService.sayHi("world");
-        System.out.println("消费者收到服务端附件: " + RpcContext.getServerAttachment().getAttachment("server-key1"));
+
+        // 尝试不同的上下文获取附件
+        System.out.println("consumer-key1 from attachment: " + RpcContext.getClientResponseContext().getAttachment("server-key1"));
+        System.out.println("consumer-key1 from attachment: " + RpcContext.getServiceContext().getAttachment("server-key1"));
+        System.out.println("consumer-key1 from attachment: " + RpcContext.getClientAttachment().getAttachment("server-key1"));
+
+        System.out.println("consumer-key2 from attachment: " + RpcContext.getClientResponseContext().getAttachment("server-key2"));
+        System.out.println("consumer-key2 from attachment: " + RpcContext.getServiceContext().getAttachment("server-key2"));
+        System.out.println("consumer-key2 from attachment: " + RpcContext.getClientAttachment().getAttachment("server-key2"));
         context.close();
     }
 }
