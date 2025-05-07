@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>dubbo-samples-async</module>
+        <module>dubbo-samples-attachment</module>
     </modules>
 
     <dependencies>

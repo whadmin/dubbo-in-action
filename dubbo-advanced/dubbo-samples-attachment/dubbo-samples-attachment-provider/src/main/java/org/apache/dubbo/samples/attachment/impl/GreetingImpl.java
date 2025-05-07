@@ -17,14 +17,12 @@
  *
  */
 
-package org.apache.dubbo.samples.async.impl;
+package org.apache.dubbo.samples.attachment.impl;
 
 
 import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.RpcContextAttachment;
-import org.apache.dubbo.samples.async.GreetingsService;
-
-import java.util.concurrent.CompletableFuture;
+import org.apache.dubbo.samples.attachment.GreetingsService;
 
 public class GreetingImpl implements GreetingsService {
     @Override
@@ -41,36 +39,5 @@ public class GreetingImpl implements GreetingsService {
         attachmentToClient.setAttachment("server-key1", "server-" + received);
 
         return "hello, " + name;
-    }
-
-    @Override
-    public String sayHiAsync(String name) {
-        // 用于从客户端获取附件
-        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
-        // 读取客户端发送的附件值
-        String received = (String) attachmentFromClient.getAttachment("consumer-key1");
-        System.out.println("consumer-key1 from attachment: " + received);
-
-        // 用于向客户端发送附件
-        RpcContextAttachment attachmentToClient = RpcContext.getClientAttachment();
-        // 设置返回给客户端的附件
-        attachmentToClient.setAttachment("server-key1", "server-" + received);
-
-        return "hello, " + name;
-    }
-
-    @Override
-    public CompletableFuture<String> sayHiFuture(String name) {
-        // 用于从客户端获取附件
-        RpcContextAttachment attachmentFromClient = RpcContext.getServerAttachment();
-        // 读取客户端发送的附件值
-        String received = (String) attachmentFromClient.getAttachment("consumer-key1");
-        System.out.println("consumer-key1 from attachment: " + received);
-
-        // 用于向客户端发送附件
-        RpcContextAttachment attachmentToClient = RpcContext.getClientAttachment();
-        // 设置返回给客户端的附件
-        attachmentToClient.setAttachment("server-key1", "server-" + received);
-        return CompletableFuture.completedFuture("hello, " + name);
     }
 }

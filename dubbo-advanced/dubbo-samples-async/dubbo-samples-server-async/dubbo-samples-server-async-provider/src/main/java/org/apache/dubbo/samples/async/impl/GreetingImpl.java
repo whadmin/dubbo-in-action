@@ -75,9 +75,6 @@ public class GreetingImpl implements GreetingsService {
             // 读取客户端发送的附件值
             String received = (String) attachmentFromClient.getAttachment("consumer-key1");
             logger.info("consumer-key1 from attachment: " + received);
-            received = (String) attachmentFromClient.getAttachment("filters");
-            logger.info("filters from attachment: " + received);
-            attachmentToClient.setAttachment("filters", received);
             // 设置返回给客户端的附件
             attachmentToClient.setAttachment("server-key1", "server-" + received);
             try {

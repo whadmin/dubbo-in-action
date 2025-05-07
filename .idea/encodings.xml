@@ -52,6 +52,18 @@
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-async/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-async/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-async/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-consumer/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-interface/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-interface/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-provider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/dubbo-samples-attachment-provider/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-attachment/src/main/resources-env/dev" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/src/main/resources-env/dev" charset="UTF-8" />
