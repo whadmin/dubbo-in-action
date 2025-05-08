@@ -1,23 +1,19 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package org.apache.dubbo.samples.attachment;
 
+/**
+ * 问候服务接口
+ * 
+ * 该接口用于演示Dubbo的附件传输功能。
+ * 虽然接口本身没有定义任何与附件相关的参数，
+ * 但在实际调用过程中可以通过RpcContext传递附件信息。
+ */
 public interface GreetingsService {
 
+    /**
+     * 向指定名称的用户发送问候
+     * 
+     * @param name 用户名称
+     * @return 问候语句
+     */
     String sayHi(String name);
 }
