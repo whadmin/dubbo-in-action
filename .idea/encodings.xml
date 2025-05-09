@@ -160,6 +160,18 @@
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-mock/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-mock/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-mock/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-api/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-consumer/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-provider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/dubbo-samples-timeout-provider/src/main/resources-env/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-timeout/src/main/resources-env/dev" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-validation/dubbo-samples-validation-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-validation/dubbo-samples-validation-consumer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo-advanced/dubbo-samples-validation/dubbo-samples-validation-consumer/src/main/resources-env/dev" charset="UTF-8" />

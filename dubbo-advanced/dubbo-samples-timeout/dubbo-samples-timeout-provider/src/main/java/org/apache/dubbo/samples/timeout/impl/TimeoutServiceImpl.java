@@ -1,5 +1,6 @@
 package org.apache.dubbo.samples.timeout.impl;
 
+import org.apache.dubbo.samples.timeout.api.TimeoutService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

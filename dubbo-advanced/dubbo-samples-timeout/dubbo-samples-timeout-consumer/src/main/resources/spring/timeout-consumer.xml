@@ -14,11 +14,11 @@
     <!-- 消费者默认超时时间设置为2秒 -->
     <dubbo:consumer timeout="2000"/>
 
-    <!-- 声明要使用的远程服务接口 -->
+    <!-- 声明要使用的远程服务接口 指定服务超时时间设置为4秒-->
     <dubbo:reference id="timeoutService" 
-                    interface="org.apache.dubbo.samples.timeout.api.TimeoutService">
+                    interface="org.apache.dubbo.samples.timeout.api.TimeoutService" timeout="4000">
         <!-- 为特定方法指定超时时间 -->
-        <dubbo:method name="paramLevelTimeout" timeout="4000"/>
+        <dubbo:method name="paramLevelTimeout" timeout="5000"/>
     </dubbo:reference>
 
 </beans>
