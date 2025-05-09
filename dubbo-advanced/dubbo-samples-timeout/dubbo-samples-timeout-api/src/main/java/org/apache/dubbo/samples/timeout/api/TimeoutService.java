@@ -19,7 +19,7 @@ public interface TimeoutService {
      * @param delayMs 延迟执行的毫秒数
      * @return 执行结果
      */
-    String timeoutCall(int delayMs);
+    String serviceLevelTimeout(int delayMs);
     
     /**
      * 方法级别指定超时时间的方法
@@ -29,12 +29,4 @@ public interface TimeoutService {
      */
     String methodLevelTimeout(int delayMs);
     
-    /**
-     * 参数级别指定超时时间的方法
-     * 
-     * @param delayMs 延迟执行的毫秒数
-     * @param timeoutMs 超时时间 (毫秒)
-     * @return 执行结果
-     */
-    String paramLevelTimeout(int delayMs, int timeoutMs);
 }

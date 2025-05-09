@@ -38,7 +38,7 @@ public class TimeoutServiceTest {
      */
     @Test
     public void testTimeoutCallWithinLimit() {
-        String result = timeoutService.timeoutCall(1000);
+        String result = timeoutService.serviceLevelTimeout(1000);
         assertEquals("延迟 1000 毫秒后调用成功", result);
     }
 
@@ -49,7 +49,7 @@ public class TimeoutServiceTest {
     @Test(expected = RpcException.class)
     public void testTimeoutCallExceedLimit() {
         // 这里会抛出RpcException
-        timeoutService.timeoutCall(3000);
+        timeoutService.serviceLevelTimeout(3000);
     }
 
     /**
@@ -72,23 +72,5 @@ public class TimeoutServiceTest {
         fail("应该抛出RpcException");
     }
     
-    /**
-     * 测试参数级别的超时配置
-     * 方法级别超时设置为4000ms，参数指定3000ms延迟，不会触发超时
-     */
-    @Test
-    public void testParamLevelTimeout() {
-        String result = timeoutService.paramLevelTimeout(3000, 6000);
-        assertEquals("参数级别超时设置测试：延迟 3000 毫秒后调用成功", result);
-    }
-    
-    /**
-     * 测试参数级别的超时配置（超时情况）
-     * 方法级别超时设置为4000ms，参数指定5000ms延迟，会触发超时
-     */
-    @Test(expected = RpcException.class)
-    public void testParamLevelTimeoutExceed() {
-        timeoutService.paramLevelTimeout(5000, 4000);
-        fail("应该抛出RpcException");
-    }
+
 }
