@@ -11,8 +11,6 @@
 
     <artifactId>dubbo-samples-timeout</artifactId>
     <packaging>pom</packaging>
-    <name>Dubbo Samples Timeout</name>
-    <description>Dubbo Timeout Sample Demonstrating</description>
 
     <modules>
         <module>dubbo-samples-timeout-api</module>
