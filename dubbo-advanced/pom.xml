@@ -23,6 +23,7 @@
         <module>dubbo-samples-version</module>
         <module>dubbo-samples-group</module>
         <module>dubbo-samples-direct</module>
+        <module>dubbo-samples-timeout</module>
     </modules>
 
     <dependencies>
