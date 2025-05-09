@@ -14,7 +14,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
+            <groupId>org.example</groupId>
             <artifactId>dubbo-samples-timeout-api</artifactId>
             <version>${project.version}</version>
         </dependency>
