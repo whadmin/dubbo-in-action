@@ -16,9 +16,9 @@
 
     <!-- 声明要使用的远程服务接口 指定服务超时时间设置为4秒-->
     <dubbo:reference id="timeoutService" 
-                    interface="org.apache.dubbo.samples.timeout.api.TimeoutService" timeout="4000">
+                    interface="org.apache.dubbo.samples.timeout.api.TimeoutService" timeout="3000">
         <!-- 为特定方法指定超时时间 -->
-        <dubbo:method name="paramLevelTimeout" timeout="5000"/>
+        <dubbo:method name="methodLevelTimeout" timeout="4000"/>
     </dubbo:reference>
 
 </beans>

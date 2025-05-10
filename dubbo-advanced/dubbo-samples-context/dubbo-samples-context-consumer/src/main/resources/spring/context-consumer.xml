@@ -30,7 +30,6 @@
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
     <dubbo:reference id="contextService" interface="org.apache.dubbo.samples.context.GreetingsService" timeout="10000">
-        <dubbo:method name="sayHi" />
     </dubbo:reference>
 
 </beans>

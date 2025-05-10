@@ -62,7 +62,7 @@ public class ContextConsumer {
             // 获取远程服务代理
             GreetingsService contextService = context.getBean("contextService", GreetingsService.class);
 
-            // 依次执行各种场景测试
+            // 依次执行各种场景测
             testBasicInfo(contextService);
             testTrace(contextService);
             testCascadeCall(contextService);

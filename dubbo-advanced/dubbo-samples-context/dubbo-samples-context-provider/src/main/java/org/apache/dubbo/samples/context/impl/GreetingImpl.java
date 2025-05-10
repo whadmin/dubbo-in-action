@@ -1,6 +1,9 @@
 package org.apache.dubbo.samples.context.impl;
 
+import org.apache.dubbo.common.URL;
+import org.apache.dubbo.rpc.Invoker;
 import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.rpc.RpcServiceContext;
 import org.apache.dubbo.samples.context.GreetingsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,26 +50,32 @@ public class GreetingImpl implements GreetingsService {
         logger.debug("开始处理来自 {} 的基础信息请求", clientName);
 
         try {
-            // 获取ServiceContext信息
-            boolean isProviderSide = RpcContext.getServiceContext().isProviderSide();
-            String clientIP = RpcContext.getServiceContext().getRemoteHost();
-            String localAddress = RpcContext.getServiceContext().getLocalAddress().toString();
-            String methodName = RpcContext.getServiceContext().getMethodName();
-            String remoteApplication = RpcContext.getServiceContext().getRemoteApplicationName();
+            // 获取ServiceContext
+            RpcServiceContext serviceContext = RpcContext.getServiceContext();
 
-            // 获取ServerAttachment中的附件
-            Map<String, String> attachments = RpcContext.getServerAttachment().getAttachments();
-            String attachmentsInfo = formatAttachments(attachments);
+            // 可用的API
+            boolean isProviderSide = serviceContext.isProviderSide();  // 是否为服务提供方
+            String remoteHost = serviceContext.getRemoteHost();        // 获取远程主机Host
+            String remoteAddress =serviceContext.getRemoteAddress().toString(); // 获取远程主机地址
+            String remoteApplication = serviceContext.getRemoteApplicationName(); // 获取远程应用名
+            String localHost = serviceContext.getLocalHost();          // 获取本地主机地址
+            String localAddress = serviceContext.getLocalAddress().toString(); // 获取ServiceContext信息
+            String InterfaceName = serviceContext.getInterfaceName(); // 获取接口类
+            String methodName = serviceContext.getMethodName();        // 获取当前调用的方法名
+            URL url = serviceContext.getUrl();                         // 获取URL
 
             // 构建响应
             StringBuilder response = new StringBuilder(256);
             response.append("Hello ").append(clientName).append(", Basic Information:\n");
             response.append("Provider Side: ").append(isProviderSide).append("\n");
-            response.append("Client IP: ").append(clientIP).append("\n");
-            response.append("Local Address: ").append(localAddress).append("\n");
-            response.append("Method Called: ").append(methodName).append("\n");
+            response.append("Remote Host: ").append(remoteHost).append("\n");
+            response.append("Remote Address: ").append(remoteAddress).append("\n");
             response.append("Remote Application: ").append(remoteApplication).append("\n");
-            response.append("Received Attachments: ").append(attachmentsInfo).append("\n");
+            response.append("Local Host: ").append(localHost).append("\n");
+            response.append("Local Address: ").append(localAddress).append("\n");
+            response.append("Interface Name: ").append(InterfaceName).append("\n");
+            response.append("Method Name: ").append(methodName).append("\n");
+            response.append("url: ").append(url.toString()).append("\n");
             response.append("Processing Time: ").append(System.currentTimeMillis() - startTime).append("ms\n");
 
             return response.toString();
