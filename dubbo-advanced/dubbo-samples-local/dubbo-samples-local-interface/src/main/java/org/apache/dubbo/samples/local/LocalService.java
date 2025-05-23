@@ -17,24 +17,12 @@
  *
  */
 
-package org.apache.dubbo.samples.group;
+package org.apache.dubbo.samples.local;
 
-import org.apache.dubbo.rpc.RpcContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+public interface LocalService {
 
-public class GroupConsumer {
+    String sayHello(String name);
 
-    public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/group-consumer.xml");
-        context.start();
+    String sayHelloAsync(String name);
 
-        GroupService groupAService = context.getBean("groupAService", GroupService.class);
-        GroupService groupBService = context.getBean("groupBService", GroupService.class);
-
-        String resultGroupA = groupAService.sayHi("world");
-        System.out.println(resultGroupA);
-
-        String resultGroupB = groupBService.sayHi("world");
-        System.out.println(resultGroupB);
-    }
 }

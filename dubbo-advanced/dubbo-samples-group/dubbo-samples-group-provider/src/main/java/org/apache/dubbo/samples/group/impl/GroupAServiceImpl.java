@@ -17,24 +17,22 @@
  *
  */
 
-package org.apache.dubbo.samples.group;
+package org.apache.dubbo.samples.group.impl;
 
 import org.apache.dubbo.rpc.RpcContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.apache.dubbo.samples.group.GroupService;
 
-public class GroupConsumer {
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/group-consumer.xml");
-        context.start();
 
-        GroupService groupAService = context.getBean("groupAService", GroupService.class);
-        GroupService groupBService = context.getBean("groupBService", GroupService.class);
-
-        String resultGroupA = groupAService.sayHi("world");
-        System.out.println(resultGroupA);
-
-        String resultGroupB = groupBService.sayHi("world");
-        System.out.println(resultGroupB);
+public class GroupAServiceImpl implements GroupService {
+    @Override
+    public String sayHi(String name) {
+        System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + name +
+                ", request from consumer: " + RpcContext.getContext().getRemoteAddress() + "in groupA");
+        return "Hello " + name + ", response from provider: " + RpcContext.getContext().getLocalAddress() + " in group A";
     }
+
+
 }

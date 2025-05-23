@@ -25,12 +25,15 @@
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <context:property-placeholder/>
 
-    <dubbo:application name="async-consumer"/>
+    <dubbo:application name="exception-consumer"/>
+
+    <bean id="consumerExceptionFilter" class="org.apache.dubbo.samples.exception.filter.ConsumerExceptionFilter" />
+
+    <dubbo:consumer filter="consumerExceptionFilter" />
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
     <dubbo:reference id="exceptionService" interface="org.apache.dubbo.samples.exception.GreetingsService" timeout="10000">
         <dubbo:method name="sayHi" />
     </dubbo:reference>
-
 </beans>

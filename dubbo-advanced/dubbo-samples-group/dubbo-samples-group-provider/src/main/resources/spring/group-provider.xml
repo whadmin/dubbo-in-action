@@ -33,8 +33,14 @@
 
     <dubbo:protocol name="dubbo" port="20880"/>
 
-    <bean id="groupService" class="org.apache.dubbo.samples.group.impl.GreetingImpl"/>
+    <bean id="groupAService" class="org.apache.dubbo.samples.group.impl.GroupAServiceImpl"/>
 
-    <dubbo:service interface="org.apache.dubbo.samples.group.GreetingsService" ref="groupService"/>
+    <bean id="groupBService" class="org.apache.dubbo.samples.group.impl.GroupBServiceImpl"/>
+
+    <dubbo:service id="groupADubboService" group="groupA" interface="org.apache.dubbo.samples.group.GroupService"
+                   ref="groupAService"/>
+
+    <dubbo:service id="groupBDubboService" group="groupB" interface="org.apache.dubbo.samples.group.GroupService"
+                   ref="groupBService"/>
 
 </beans>

@@ -1,0 +1,1 @@
+exceptionHandlerFilter=org.apache.dubbo.samples.exception.filter.GlobalExceptionFilter

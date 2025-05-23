@@ -29,8 +29,10 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.address:127.0.0.1}:2181"/>
 
-    <dubbo:reference id="groupService" interface="org.apache.dubbo.samples.group.GreetingsService" timeout="10000">
-        <dubbo:method name="sayHi" />
-    </dubbo:reference>
+    <dubbo:reference group="groupA" id="groupAService" check="false"
+                     interface="org.apache.dubbo.samples.group.GroupService"/>
+
+    <dubbo:reference group="groupB" id="groupBService" check="false"
+                     interface="org.apache.dubbo.samples.group.GroupService"/>
 
 </beans>

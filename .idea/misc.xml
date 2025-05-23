@@ -10,6 +10,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/dubbo-advanced/dubbo-samples-local/dubbo-samples-local-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-basic/dubbo-samples-api-consumer/pom.xml" />
       </set>
     </option>

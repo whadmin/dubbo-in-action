@@ -31,7 +31,9 @@ public class LocalProvider {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/local-provider.xml");
         context.start();
 
-        System.out.println("dubbo service started");
+        LocalService demoService = context.getBean("demoService", LocalService.class);
+        String hello = demoService.sayHello("world");
+        System.out.println(hello);
         new CountDownLatch(1).await();
     }
 }

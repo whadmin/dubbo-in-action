@@ -17,7 +17,33 @@
 
 package org.apache.dubbo.samples.exception;
 
+/**
+ * 问候服务接口，演示异常处理
+ */
 public interface GreetingsService {
-
-    String sayHi(String name);
+    /**
+     * 打招呼方法
+     * 
+     * @param name 名称
+     * @return 问候语
+     * @throws BusinessException 当出现业务异常时抛出
+     */
+    String sayHi(String name) throws BusinessException;
+    
+    /**
+     * 可能抛出超时异常的演示方法
+     * 
+     * @param timeoutMs 模拟超时的毫秒数
+     * @return 处理结果
+     */
+    String timeoutMethod(int timeoutMs);
+    
+    /**
+     * 可能恢复的异常场景
+     * 
+     * @param param 参数
+     * @return 结果
+     * @throws BusinessException 业务异常
+     */
+    String recoverableMethod(String param) throws BusinessException;
 }
